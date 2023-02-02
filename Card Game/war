@@ -1,0 +1,46 @@
+'''
+Card Game - War
+Creator(s): Gage Gunn
+
+Version 1.0
+'''
+
+from game_interface import Cards, Score
+import time
+import os
+
+def war():
+    cards = Cards()
+    score = Score(0, 0)
+    score.reset_score()
+    os.system('cls')
+
+    while len(cards.picked_cards) != 52:
+        print(f'\nPlayer 1 Score = {score.player_1_score}  |  Player 2 Score = {score.player_2_score}') #Print player scores
+
+        #Draw cards
+        player_1_card = cards.random_card() #Draw card for player 1
+        score.player_1_value = cards.values.get(cards.random_value)
+        print(f'Player 1 drew {player_1_card}', end = '  |  ')
+        time.sleep(1)
+
+        player_2_card = cards.random_card() #Draw card for player 2
+        score.player_2_value = cards.values.get(cards.random_value)
+        print(f'Player 2 drew {player_2_card} \n', end = '', flush = True)
+        input('\nPress enter to continue \n>')
+
+        #Check cards against eachother
+        if score.player_1_value > score.player_2_value:
+            score.player_1_score += 1
+        elif score.player_2_value > score.player_1_value:
+            score.player_2_score += 1
+        else:
+            score.player_1_score += 0.5
+            score.player_2_score += 0.5
+        
+        os.system('cls')
+    
+    print(f'\nPlayer 1 Score = {score.player_1_score}  |  Player 2 Score = {score.player_2_score}') #Print final scores
+    score.check_winner(score.player_1_score, score.player_2_score)
+
+war()
