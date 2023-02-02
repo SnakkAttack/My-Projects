@@ -1,0 +1,57 @@
+'''
+Knucklebones
+Gage Gunn
+
+Version 0.1
+'''
+
+
+import os
+import time
+import random
+
+p1_board_values = ['-', '-', '-', '-', '-', '-', '-', '-', '-', ]
+p2_board_values = ['-', '-', '-', '-', '-', '-', '-', '-', '-', ]
+dice = {'1':1, '2':2, '3':3, '4':4, '5':5, '6':6}
+current_player = random.randint(1,2)
+p1_score = 0
+p2_score = 0
+
+def p1_board():
+    print("\n")
+    print(f'Score = {p1_score}')
+    print(p1_board_values[0] + " | " + p1_board_values[1] + " | " + p1_board_values[2] + "         1 | 2 | 3")
+    print(p1_board_values[3] + " | " + p1_board_values[4] + " | " + p1_board_values[5] + "         4 | 5 | 6")
+    print(p1_board_values[6] + " | " + p1_board_values[7] + " | " + p1_board_values[8] + "         7 | 8 | 9")
+    print("\n")
+
+def p2_board():
+    print("\n")
+    print(p2_board_values[0] + " | " + p2_board_values[1] + " | " + p2_board_values[2] + "         1 | 2 | 3")
+    print(p2_board_values[3] + " | " + p2_board_values[4] + " | " + p2_board_values[5] + "         4 | 5 | 6")
+    print(p2_board_values[6] + " | " + p2_board_values[7] + " | " + p2_board_values[8] + "         7 | 8 | 9")
+    print(f'Score = {p2_score}')
+    print("\n")
+
+def check_for_end():
+    if '-' not in p1_board_values or p2_board_values:
+        return 1
+    else:
+        return 0
+
+def check_winner():
+    if p1_score > p2_score:
+        return 1
+    elif p1_score < p2_score:
+        return 2
+    else:
+        return 0
+
+###Main
+
+while True:
+    os.system('cls')
+    print('Welcome to Knucklebones\n')
+    #random player goes first (pvp now, add bot later)
+
+    pass
