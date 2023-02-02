@@ -1,10 +1,11 @@
 '''
 Card Game Interface
+Creator(s): Gage Gunn
+
+Version 1.0
 '''
 
-import os
 import random
-import time
 
 class Cards:
     def __init__(self):
@@ -37,49 +38,29 @@ class Cards:
         return card_picked
 
 
-class Games:
-    def __init__(self):
+class Score:
+    def __init__(self, player_1_score, player_2_score):
+        self.player_1_score = player_1_score
+        self.player_2_score = player_2_score
         self.player_1_value = 0
-        self.player_1_score = 0
         self.player_2_value = 0
+
+
+    def check_winner(self, player_1_score, player_2_score):
+        if player_1_score > player_2_score:
+            winner = print(f'Player 1 was won with a score of {str(player_1_score)}')
+        elif player_2_score > player_1_score:
+            winner = print(f'Player 2 has won with a score of {str(player_2_score)}')
+        elif player_1_score == player_2_score:
+            winner = print('Both players have tied')
+        else:
+            return False
+        return winner
+
+    def reset_score(self):
+        self.player_1_score = 0
         self.player_2_score = 0
 
 
-    def check_winner():
-        if game.player_1_score > game.player_2_score:
-            print(f'Player 1 was won with a score of {game.player_1_score}')
-        elif game.player_2_score > game.player_1_score:
-            print(f'Player 2 has won with a score of {game.player_2_score}')
-        elif game.player_1_score == game.player_2_score:
-            print('Both players have tied')
-        else:
-            return False
-
-    def war(self):
-        time.sleep(1)
-        while len(cards.picked_cards) != 52:
-            player_1_card = cards.random_card()
-            game.player_1_value = cards.values.get(cards.random_value)
-            print(f'Player 1 drew {player_1_card}')
-            # time.sleep(1)
-
-            player_2_card = cards.random_card()
-            game.player_2_value = cards.values.get(cards.random_value)
-            print(f'Player 2 drew {player_2_card}')
-            # time.sleep(1)
-
-            if game.player_1_value > game.player_2_value:
-                game.player_1_score += 1
-            elif game.player_2_value > game.player_1_value:
-                game.player_2_score += 1
-            else:
-                game.player_1_score += 0.5
-                game.player_2_score += 0.5
-        
-        game.check_winner()
-
-
 cards = Cards()
-game = Games()
-
-game.war()
+score = Score(0, 0)
